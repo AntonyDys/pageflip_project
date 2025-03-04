@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+      <head>
+        <meta charset="UTF-8">
+          <title>PageFlip -
+            {% block title_block %}
+              A new genre awaits...
+            {% endblock %}
+          </title>
+      </head>
+      <body>
+        <div>
+          {% block body_block %}
+            Default body content
+        {% endblock %}
+        </div>
+
+        <div>
+            <ul>
+                {% if user.is_authenticated %}
+
+                {% else %}
+                <li> <a href="{% url 'pageflip:register' %}">Register</a></li>
+                {% endif %}
+                <li> <a href="{% url 'pageflip:about' %}">About us</a> </li>
+                <li> <a href="{% url 'pageflip:index' %}">Home</a></li>
+            </ul>
+        </div>
+
+</body>
+</html>
