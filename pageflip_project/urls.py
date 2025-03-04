@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from pageflip import views
 
 urlpatterns = [
+    path('', views.index, name='index'),
+    path('pageflip/', include('pageflip.urls')),#maps any pageflip urls to be handled by pageflip
     path('admin/', admin.site.urls),
 ]
