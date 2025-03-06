@@ -1,0 +1,28 @@
+{% extends 'pageflip/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Profile for {{ selected_user.username }}
+{% endblock %}
+
+{% block body_block %}
+<div>
+    <h1>{{ selected_user.username }}'s Profile</h1>
+</div>
+
+<div>
+    <img src="{{ MEDIA_URL }}{{ user_profile.profilePicture }}"
+         width="300"
+         height="300"
+         alt="{{ selected_user.username }}'s profile picture"/>
+    <br/>
+    <div>
+
+        <p>
+            <strong>About me:</strong>
+            {{ user_profile.userAboutMe }}
+        </p>
+
+    </div>
+</div>
+{% endblock %}
