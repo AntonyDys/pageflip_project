@@ -22,4 +22,5 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('pageflip/', include('pageflip.urls')),#maps any pageflip urls to be handled by pageflip
     path('admin/', admin.site.urls),
+    path('accounts/', include('registration.backends.simple.urls')),
 ]
