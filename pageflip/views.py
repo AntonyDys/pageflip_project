@@ -93,3 +93,52 @@ class ProfileView(View):#this is to show the user's profile properly
                         'form': form}
 
         return render(request, 'pageflip/profile.html', context_dict)
+
+#this class is for editing the profile separately from viewing it since I had trouble with displaying it and editing
+#it would basically only show the profile picture and about me would just be a blank text box no matter what
+class EditProfileView(View):
+    def get_user_details(self, username):
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            return None
+
+        user_profile = UserProfile.objects.get_or_create(user=user)[0]
+        #has the about me stuff and profile picture now
+        form = UserProfileForm({'aboutMe': user_profile.userAboutMe,
+                                'profilePicture': user_profile.profilePicture})
+
+        return(user, user_profile, form)
+
+    @method_decorator(login_required)
+    def get(self, request, username):
+        try:
+            (user, user_profile, form) = self.get_user_details(username)
+        except TypeError:
+            return redirect(reverse('pageflip:index'))
+
+        context_dict = {'user_profile': user_profile,
+                        'selected_user': user,
+                        'form': form}
+        return render(request, 'pageflip/profile_edit.html', context_dict)
+
+    @method_decorator(login_required())
+    def post(self, request, username):
+        try:
+            (user, user_profile, form) = self.get_user_details(username)
+        except TypeError:
+            return redirect(reverse('pageflip:index'))
+
+        form = UserProfileForm(request.POST, request.FILES, instance=user_profile)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('pageflip:profile', user.username)
+        else:
+            print(form.errors)
+
+        context_dict = {'user_profile': user_profile,
+                        'selected_user': user,
+                        'form': form}
+
+        return render(request, 'pageflip/profile_edit.html', context_dict)

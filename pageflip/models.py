@@ -27,8 +27,8 @@ class UserProfile(models.Model):#for a user profile, still in progress
     #links profile to a user model provided by Django (Has all the basic stuff)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    #additional attributes for pageflip that we wanted
-    profilePicture = models.ImageField(upload_to='profile_images', blank=True)
+    #additional attributes for pageflip that we wanted, profile image is set to a default one but can be changed
+    profilePicture = models.ImageField(upload_to='profile_images', blank=True, default='profile_images/default-picture.png')
     userAboutMe = models.CharField(max_length=100, blank=True)
 
     def __str__(self):

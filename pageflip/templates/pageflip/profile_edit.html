@@ -7,25 +7,32 @@
 
 {% block body_block %}
 <div>
-    <h1>{{ selected_user.username }}'s Profile</h1>
+    <h1>Editing {{ selected_user.username }}'s Profile</h1>
 </div>
 
 <div>
-    <img src="{{ MEDIA_URL }}{{ user_profile.profilePicture.url }}"
+  <img src="{{ MEDIA_URL }}{{ user_profile.profilePicture.url }}"
          width="300"
          height="300"
          class="rounded float-end"
          alt="{{ selected_user.username }}'s profile picture"/>
-    <br/>
+  <br/>
     <div>
         <p>
             <strong>About me:</strong>
             {{ user_profile.userAboutMe }}
         </p>
-        {% if selected_user == user %}
-        <a href="{% url 'pageflip:edit_profile' user.username %}" class="btn btn-primary" role="button">Edit profile</a>
-        {% else %}
-        {% endif %}
-    </div>
+</div>
+<div>
+  {% if selected_user == user %}
+  <form method="post" action="." enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Save Changes" />
+  </form>
+  {% else %}
+  {% endif %}
+</div>
 </div>
 {% endblock %}
