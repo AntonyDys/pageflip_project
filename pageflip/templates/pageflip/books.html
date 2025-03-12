@@ -1,0 +1,17 @@
+{% extends 'pageflip/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    Books
+{% endblock %}
+
+{% block body_block %}
+    <h1>Books</h1>
+    <h2>Subgenres</h2>
+    <p>No subgenres currently present</p>
+    <ul>
+        {% for subgenre in subgenres %}
+            <li>{{ subgenre.name }}</li>  <!-- Assuming subgenre has a name attribute -->
+        {% endfor %}
+    </ul>
+{% endblock %}
