@@ -47,6 +47,13 @@ def register_profile(request):
     context_dict = {'form': form}
     return render(request, 'pageflip/profile_registration.html', context_dict)
 
+def books(request):#books!
+
+    context_dict = {}
+
+    response = render(request, 'pageflip/books.html', context=context_dict)
+    return response
+
 class ProfileView(View):#this is to show the user's profile properly
     def get_user_details(self, username):
         try:
