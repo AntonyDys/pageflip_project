@@ -7,11 +7,20 @@
 
 {% block body_block %}
     <h1>Books</h1>
-    <h2>Subgenres</h2>
-    <p>No subgenres currently present</p>
-    <ul>
-        {% for subgenre in subgenres %}
-            <li>{{ subgenre.name }}</li>  
-        {% endfor %}
-    </ul>
+    <div class="button-container text-right">
+        <a class="btn btn-small pink-button" href="{% url 'registration_register' %}">Register</a>
+        <a class="btn btn-small btn-dark-blue" href="{% url 'auth_login' %}">Log in</a>
+        <a class="btn btn-dark-blue" href="{% url 'pageflip:profile' user.username %}">Profile</a>
+        <a class="btn btn-dark-blue" href="{% url 'pageflip:books' %}">Books</a>
+        <button class="btn btn-dark-blue">Contact Us</button>
+    </div>
+    <div class="big-pink-container">
+        <h2>Science Fiction</h2>
+        <p>No subgenres currently present</p>
+        <ul>
+            {% for subgenre in subgenres %}
+                <li>{{ subgenre.name }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}
