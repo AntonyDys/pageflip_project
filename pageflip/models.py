@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Avg
+
 
 class SubGenreCategory(models.Model):#sub-genres for the books, like categories in the text book
     NAME_MAX_LENGTH = 128
@@ -18,7 +20,10 @@ class BookPage(models.Model):#the books themselves
     author = models.CharField(max_length=TITLE_MAX_LENGTH)
     genre = models.ForeignKey(SubGenreCategory, on_delete=models.CASCADE)
     description = models.CharField(max_length=400)
-    rating = models.IntegerField(default=0)
+
+    def average_rating(self):
+        avg = self.ratings.aggregate(Avg('rating'))['rating_avg']
+        return round(avg, 1) if avg else 0
 
     def __str__(self):
         return self.title
@@ -33,3 +38,15 @@ class UserProfile(models.Model):#for a user profile, still in progress
 
     def __str__(self):
         return self.user.username
+
+class BookRating(models.Model):#model for the ratings, uses Users as a FK
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(BookPage, on_delete=models.CASCADE, related_name="ratings")
+    rating = models.PositiveSmallIntegerField(choices=[(i, i) for i in range(1,6)])
+
+    class Meta:
+        unique_together = ('user', 'book')
+
+    def __str__(self):
+        return f"{self.user.username} rated this book {self.rating} stars"
+
