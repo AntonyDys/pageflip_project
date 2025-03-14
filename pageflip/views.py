@@ -149,3 +149,11 @@ class EditProfileView(View):
                         'form': form}
 
         return render(request, 'pageflip/profile_edit.html', context_dict)
+
+class ListProfilesView(View):
+    @method_decorator(login_required)
+    def get(self, request):
+        profiles = UserProfile.objects.all()
+
+        return render(request, 'pageflip/profile_list.html',
+                      {'user_profile_list': profiles})

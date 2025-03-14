@@ -33,3 +33,4 @@ class UserProfile(models.Model):#for a user profile, still in progress
 
     def __str__(self):
         return self.user.username
+
