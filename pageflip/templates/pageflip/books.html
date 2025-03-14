@@ -6,7 +6,8 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1>Books</h1>
+    <h1>Young Adult Books</h1>
+
     <div class="button-container text-right">
         <button class="btn btn-small pink-button">Register</button>
         <button class="btn btn-small btn-dark-blue">Log in</button>
@@ -14,13 +15,67 @@
         <button class="btn btn-dark-blue">Books</button>
         <button class="btn btn-dark-blue">Contact Us</button>
     </div>
-    <div class="big-pink-container">
-        <h2>Science Fiction</h2>
-        <p>No subgenres currently present</p>
-        <ul>
-            {% for subgenre in subgenres %}
-                <li>{{ subgenre.name }}</li>
-            {% endfor %}
-        </ul>
+
+    <div class="container">
+        <!-- Left Side: Books List -->
+        <div class="books-list" style="width: 70%; float: left;">
+            <h2>Books</h2>
+
+            {% if selected_subgenre %}
+                <p>Showing books in <strong>{{ selected_subgenre }}</strong> <a href="{% url 'pageflip:books' %}">Reset Filter</a></p>
+            {% endif %}
+
+            <ul style="list-style: none; padding: 0;">
+                {% for book in books %}
+                    <li style="margin-bottom: 10px;">
+                        <a href="{% url 'pageflip:book_detail' book.id %}" style="font-size: 18px; font-weight: bold;">
+                            {{ book.title }}
+                        </a>
+                    </li>
+                {% empty %}
+                    <li>No books available.</li>
+                {% endfor %}
+            </ul>
+
+            <!-- Pagination Controls -->
+            <div class="pagination">
+                {% if books.has_previous %}
+                    <a href="?page=1{% if selected_subgenre %}&subgenre={{ selected_subgenre }}{% endif %}">First</a>
+                    <a href="?page={{ books.previous_page_number }}{% if selected_subgenre %}&subgenre={{ selected_subgenre }}{% endif %}">Previous</a>
+                {% endif %}
+
+                <span>Page {{ books.number }} of {{ books.paginator.num_pages }}</span>
+
+                {% if books.has_next %}
+                    <a href="?page={{ books.next_page_number }}{% if selected_subgenre %}&subgenre={{ selected_subgenre }}{% endif %}">Next</a>
+                    <a href="?page={{ books.paginator.num_pages }}{% if selected_subgenre %}&subgenre={{ selected_subgenre }}{% endif %}">Last</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Right Side: Collapsible Subgenres -->
+        <div class="subgenres-list" style="width: 25%; float: right;">
+            <h2>Subgenres</h2>
+            <button onclick="toggleSubgenres()" class="btn btn-small btn-dark-blue">Show Subgenres</button>
+            <ul id="subgenre-menu" style="display: none;">
+                {% for subgenre in subgenres %}
+                    <li><a href="?subgenre={{ subgenre.name }}">{{ subgenre.name }}</a></li>
+                {% empty %}
+                    <li>No subgenres available.</li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
+
+    <script>
+        function toggleSubgenres() {
+            var menu = document.getElementById("subgenre-menu");
+            if (menu.style.display === "none") {
+                menu.style.display = "block";
+            } else {
+                menu.style.display = "none";
+            }
+        }
+    </script>
+
 {% endblock %}

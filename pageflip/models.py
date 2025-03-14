@@ -18,8 +18,10 @@ class BookPage(models.Model):#the books themselves
     TITLE_MAX_LENGTH = 128
     title = models.CharField(max_length=TITLE_MAX_LENGTH, unique=True)
     author = models.CharField(max_length=TITLE_MAX_LENGTH)
-    genre = models.ForeignKey(SubGenreCategory, on_delete=models.CASCADE)
-    description = models.CharField(max_length=400)
+    year_of_publication = models.PositiveIntegerField()
+    series_info = models.CharField(max_length=50) #Standalone or part of a Series
+    description = models.TextField()  # longer than CharField if needed
+    subgenres = models.ManyToManyField(SubGenreCategory)
 
     def average_rating(self):
         avg = self.ratings.aggregate(Avg('rating'))['rating_avg']

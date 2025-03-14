@@ -1,14 +1,15 @@
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
 from django.utils.decorators import method_decorator
 from django.views import View
+from django.core.paginator import Paginator
 
 from pageflip.forms import UserForm, UserProfileForm
-from pageflip.models import UserProfile
+from pageflip.models import UserProfile, BookPage, SubGenreCategory
 
 
 def index(request):
@@ -47,12 +48,33 @@ def register_profile(request):
     context_dict = {'form': form}
     return render(request, 'pageflip/profile_registration.html', context_dict)
 
+def book_detail(request, book_id):
+    book = get_object_or_404(BookPage, id=book_id)
+    return render(request, "pageflip/book_detail.html", {"book": book})
+
 def books(request):#books!
+    subgenres = SubGenreCategory.objects.all()  #gets all subgenres for the sidebar (more asthetic)
 
-    context_dict = {}
+    #gets the selected subgenre from the URL when selected
+    selected_subgenre = request.GET.get("subgenre", None)
 
-    response = render(request, 'pageflip/books.html', context=context_dict)
-    return response
+    if selected_subgenre:
+        #filter books to show only those selected in the subgenre
+        books = BookPage.objects.filter(subgenres__name=selected_subgenre).order_by("id")
+    else:
+        books = BookPage.objects.all().order_by("id") # all books if no subgenre is selected
+
+    #Paginate books (15 per page) <- pretty cool
+    paginator = Paginator(books, 15)
+    page = request.GET.get("page")
+    paged_books = paginator.get_page(page)
+
+    context_dict = {
+        "books": paged_books,
+        "subgenres": subgenres,
+        "selected_subgenre": selected_subgenre,  #pass the selected subgenre to the template
+    }
+    return render(request, "pageflip/books.html", context=context_dict)
 
 class ProfileView(View):#this is to show the user's profile properly
     def get_user_details(self, username):

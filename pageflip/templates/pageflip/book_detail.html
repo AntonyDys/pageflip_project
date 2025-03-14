@@ -1,0 +1,25 @@
+{% extends 'pageflip/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {{ book.title }}
+{% endblock %}
+
+{% block body_block %}
+    <div class="book-detail" style="max-width: 600px; margin: auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+        <h2>{{ book.title }}</h2>
+        <p><strong>Author:</strong> {{ book.author }}</p>
+        <p><strong>Year:</strong> {{ book.year_of_publication }}</p>
+        <p><strong>Series Info:</strong> {{ book.series_info }}</p>
+        <p><strong>Description:</strong> {{ book.description }}</p>
+        <p><strong>Subgenres:</strong>
+            {% for subgenre in book.subgenres.all %}
+                <a href="{% url 'pageflip:books' %}?subgenre={{ subgenre.name }}">{{ subgenre.name }}</a>{% if not forloop.last %}, {% endif %}
+            {% empty %}
+                No subgenres
+            {% endfor %}
+        </p>
+        <br>
+        <a href="{% url 'pageflip:books' %}" class="btn btn-dark-blue">Back to Books</a>
+    </div>
+{% endblock %}
