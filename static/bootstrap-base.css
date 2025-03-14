@@ -1,0 +1,36 @@
+/* Styles for bootstrap-base.html */
+
+/* New styles for books.html */
+.big-pink-container {
+    background-color: pink;
+    padding: 20px;
+    text-align: center;
+    width: 80%; /* Set width to 80% */
+    margin: 0 auto; /* Center the container */
+    max-width: 600px; /* Optional: Set a maximum width */
+}
+
+/* New styles for index.html */
+.pink-background {
+    background-color: pink;
+}
+
+.lightgray-background {
+    background-color: lightgray;
+}
+
+.pink-button {
+    background-color: pink;
+}
+
+.container.mt-5 {
+    background-color: pink;
+}
+
+.container.mt-5:nth-of-type(2) {
+    background-color: lightgray;
+}
+
+.btn.btn-small {
+    background-color: pink;
+}
