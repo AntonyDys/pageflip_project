@@ -11,4 +11,30 @@
       <strong>{{ boldmessage }}</strong>
     </div>
 
+    <div class="container mt-5 pink-background">
+        <h2>Most viewed this month</h2>
+        <ul>
+            <li>Book 1</li>
+            <li>Book 2</li>
+            <li>Book 3</li>
+            <li>Book 4</li>
+            <li>Book 5</li>
+            <li>Book 6</li>
+        </ul>
+    </div>
+
+    <div class="container mt-5 lightgray-background">
+        <h4>Genre of the</h4>
+        <h2>Month</h2>
+        <p>Science Fiction</p>
+    </div>
+
+    <div class="button-container text-right">
+        <a class="btn btn-small pink-button" href="{% url 'registration_register' %}">Register</a>
+        <a class="btn btn-small btn-dark-blue" href="{% url 'auth_login' %}">Login</a>
+        <a class="btn btn-dark-blue" href="{% url 'pageflip:profile' user.username %}">Profile</a>
+        <a class="btn btn-dark-blue" href="{% url 'pageflip:books' %}">Books</a>
+        <button class="btn btn-dark-blue">Contact Us</button>
+    </div>
+
 {% endblock %}
