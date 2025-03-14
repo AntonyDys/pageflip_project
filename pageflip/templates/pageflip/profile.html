@@ -6,11 +6,8 @@
 {% endblock %}
 
 {% block body_block %}
-<div>
+<div class="big-pink-container">
     <h1>{{ selected_user.username }}'s Profile</h1>
-</div>
-
-<div>
     <img src="{{ MEDIA_URL }}{{ user_profile.profilePicture.url }}"
          width="300"
          height="300"
