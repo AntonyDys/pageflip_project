@@ -1,13 +1,15 @@
 /* Styles for bootstrap-base.html */
 
+/* please bear with me as I don't know how this looks */
+
 /* New styles for books.html */
 .big-pink-container {
     background-color: pink;
     padding: 20px;
     text-align: center;
-    width: 80%; /* Set width to 80% */
-    margin: 0 auto; /* Center the container */
-    max-width: 600px; /* Optional: Set a maximum width */
+    width: 80%; /* Sets width to 80% */
+    margin: 0 auto; /* Centers the container */
+    max-width: 600px; /* Sets the maximum width */
 }
 
 /* New styles for index.html */
