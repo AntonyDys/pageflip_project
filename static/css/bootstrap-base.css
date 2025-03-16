@@ -3,6 +3,14 @@
 /* please bear with me as I don't know how this looks  */
 
 
+/* Class for an older, classic italic style for titles */
+
+.italic-classic {
+    font-family: 'Playfair Display', serif; /* Classic, elegant serif font */
+    font-style: italic;
+    font-weight: 600;
+    color: #222; /* Slightly darker for a refined look */
+}
 
 
 .italic-modern {
