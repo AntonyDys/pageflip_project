@@ -4,13 +4,16 @@
 
 /* New styles for books.html */
 .big-pink-container {
-    background-color: pink;
+    background-color: #d63384; /* Darker pink */
     padding: 20px;
     text-align: center;
     width: 80%; /* Sets width to 80% */
     margin: 0 auto; /* Centers the container */
     max-width: 600px; /* Sets the maximum width */
+    border-radius: 20px; /* Curved borders */
+    color: white; /* White text for better contrast */
 }
+
 
 /* New styles for index.html */
 .pink-background {
