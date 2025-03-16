@@ -37,6 +37,24 @@
     }
 }
 
+.navbar .navbar-button {
+    background: #1a237e; /* Dark blue */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.navbar .navbar-button:hover {
+    background: #0f1841; /* Darker shade of blue on hover */
+}
+
+
+
+
 /* New styles for books.html */
 .big-pink-container {
     background-color: #d63384; /* Darker pink */
