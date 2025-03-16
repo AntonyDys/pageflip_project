@@ -3,6 +3,12 @@
 /* please bear with me as I don't know how this looks  */
 
 
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
 .italic-modern {
     font-family: 'Poppins', sans-serif; /* Modern-looking font */
     font-style: italic;
