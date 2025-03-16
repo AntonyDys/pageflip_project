@@ -68,7 +68,7 @@
         <!-- Right Side: Collapsible Subgenres -->
         <div class="subgenres-list" style="width: 20%; float: right;">
             <h2>Subgenres</h2>
-            <button onclick="toggleSubgenres()" class="btn btn-small btn-dark-blue">Show Subgenres</button>
+            <button onclick="toggleSubgenres()" class="pink-button">Show Subgenres</button>
             <ul id="subgenre-menu" style="display: none;">
                 {% for subgenre in subgenres %}
                     <li><a href="?subgenre={{ subgenre.name }}">{{ subgenre.name }}</a></li>
