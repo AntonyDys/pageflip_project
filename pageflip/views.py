@@ -14,8 +14,11 @@ from pageflip.models import UserProfile, BookPage, SubGenreCategory, BookRating
 
 def index(request):
 
+    book_list = BookPage.objects.order_by('-ratings')[:5]
+
     context_dict = {}
     context_dict['boldmessage'] = 'This months genre: Young Adult!'
+    context_dict['books'] = book_list
 
     response = render(request, 'pageflip/index.html', context=context_dict)
 

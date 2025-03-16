@@ -12,14 +12,13 @@
     </div>
 
     <div class="container mt-5 pink-background">
-        <h2>Most viewed this month</h2>
+        <h2>Highest rated this month</h2>
         <ul>
-            <li>Book 1</li>
-            <li>Book 2</li>
-            <li>Book 3</li>
-            <li>Book 4</li>
-            <li>Book 5</li>
-            <li>Book 6</li>
+            {% for book in books %}
+            <li class="list-group-item">
+                <a href="{%url 'pageflip:book_detail' book.id %}">{{ book.title }}</a>
+            </li>
+            {% endfor %}
         </ul>
     </div>
 
