@@ -2,6 +2,14 @@
 
 /* please bear with me as I don't know how this looks  */
 
+
+.italic-modern {
+    font-family: 'Poppins', sans-serif; /* Modern-looking font */
+    font-style: italic;
+    font-weight: 300;
+    color: #444; /* Slightly darker gray for contrast */
+}
+
 /* New styles for books.html */
 .big-pink-container {
     background-color: #d63384; /* Darker pink */
