@@ -67,15 +67,6 @@
         </div>
     </div>
 
-    <script>
-        function toggleSubgenres() {
-            var menu = document.getElementById("subgenre-menu");
-            if (menu.style.display === "none") {
-                menu.style.display = "block";
-            } else {
-                menu.style.display = "none";
-            }
-        }
-    </script>
+    <script src="{% static "js/books.js" %}" crossorigin="anonymous"></script>
 
 {% endblock %}
