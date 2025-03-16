@@ -9,13 +9,13 @@ from django.views import View
 from django.core.paginator import Paginator
 
 from pageflip.forms import UserForm, UserProfileForm
-from pageflip.models import UserProfile, BookPage, SubGenreCategory
+from pageflip.models import UserProfile, BookPage, SubGenreCategory, BookRating
 
 
 def index(request):
 
     context_dict = {}
-    context_dict['boldmessage'] = 'This months genre: Sci-fi!'
+    context_dict['boldmessage'] = 'This months genre: Young Adult!'
 
     response = render(request, 'pageflip/index.html', context=context_dict)
 
@@ -122,6 +122,54 @@ class ProfileView(View):#this is to show the user's profile properly
                         'form': form}
 
         return render(request, 'pageflip/profile.html', context_dict)
+
+#view for adding a rating to the book a user is viewing, this was painful
+@login_required
+def add_rating(request, book_id):
+    book = get_object_or_404(BookPage, pk=book_id)
+
+    rating_value = request.POST.get('rating', 1)
+
+    if not rating_value:
+        return redirect('pageflip:book_detail', book_id=book_id)
+    try:
+        rating_value = int(rating_value)
+        if rating_value < 1 or rating_value > 5:
+            raise ValueError("Invalid rating")
+    except (ValueError, TypeError):
+        return redirect('pageflip:book_detail', book_id=book_id)
+
+    user = request.user
+
+    if not user.is_authenticated:
+        return redirect('pageflip:login') #if someone not signed in sees the rating somehow, it redirects
+
+    #get the rating
+    rating_value = request.POST.get('rating')
+
+    #test
+    print(f"{rating_value}")
+
+    try:
+        #this checks if a rating already exists (from the user) and updates it if so
+        #without this it kind of fucks it up
+        book_rating = BookRating.objects.filter(user=user, book=book).first()
+
+        if book_rating:
+            book_rating.rating = rating_value
+        else:
+            book_rating = BookRating(user=user, book=book, rating=rating_value)
+
+        #save rating
+        book_rating.save()
+
+    except Exception as e:
+        #for debug
+        print(f"Error occurred: {str(e)}")
+        return redirect('pageflip:book_detail', book_id=book_id)
+
+
+    return redirect('pageflip:book_detail', book_id=book_id)
 
 #this class is for editing the profile separately from viewing it since I had trouble with displaying it and editing
 #it would basically only show the profile picture and about me would just be a blank text box no matter what

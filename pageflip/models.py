@@ -24,8 +24,9 @@ class BookPage(models.Model):#the books themselves
     subgenres = models.ManyToManyField(SubGenreCategory)
 
     def average_rating(self):
-        avg = self.ratings.aggregate(Avg('rating'))['rating_avg']
-        return round(avg, 1) if avg else 0
+        #ratings = self.ratings.all()
+        avg = self.ratings.aggregate(Avg('rating'))['rating__avg']
+        return round(avg, 1) if avg is not None else 0
 
     def __str__(self):
         return self.title
