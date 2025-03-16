@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.urls import path
 from pageflip import views
 
@@ -13,3 +15,4 @@ urlpatterns = [
     path('profile/<username>/', views.ProfileView.as_view(), name='profile'),
     path('profile/<username>/edit_profile', views.EditProfileView.as_view(), name='edit_profile'),
 ]
+

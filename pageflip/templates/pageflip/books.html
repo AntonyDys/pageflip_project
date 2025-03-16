@@ -18,27 +18,46 @@
 
     <div class="container">
         <!-- Left Side: Books List -->
-        <div class="books-list" style="width: 70%; float: left;">
+        <div class="books-list" style="width: 75%; float: left;">
             <h2>Books</h2>
 
             {% if selected_subgenre %}
-                <p>Showing books in <strong>{{ selected_subgenre }}</strong> <a href="{% url 'pageflip:books' %}">Reset Filter</a></p>
+                <p>Showing books in <strong>{{ selected_subgenre }}</strong>
+                   <a href="{% url 'pageflip:books' %}">Reset Filter</a>
+                </p>
             {% endif %}
 
-            <ul style="list-style: none; padding: 0;">
+            <!-- Book Grid -->
+            <ul style="display: flex; flex-wrap: wrap; justify-content: space-between; padding: 0;">
                 {% for book in books %}
-                    <li style="margin-bottom: 10px;">
-                        <a href="{% url 'pageflip:book_detail' book.id %}" style="font-size: 18px; font-weight: bold;">
+                    <li style="width: 30%; text-align: center; margin-bottom: 20px; list-style: none;">
+                        <!-- Book Image -->
+                        <a href="{% url 'pageflip:book_detail' book.id %}">
+                            <img src="/media/book_covers/default_book.jpg"
+                                 alt="Book Cover"
+                                 width="200"
+                                 height="200"
+                                 style="display: block; margin: 0 auto;">
+                        </a>
+
+                        <!-- Book Title Below Image -->
+                        <a href="{% url 'pageflip:book_detail' book.id %}"
+                           style="display: block; font-size: 18px; font-weight: bold; margin-top: 10px;">
                             {{ book.title }}
                         </a>
                     </li>
+
+                    <!-- Ensure 3 books per row -->
+                    {% if forloop.counter|divisibleby:3 %}
+                        <div style="width: 100%;"></div>
+                    {% endif %}
                 {% empty %}
                     <li>No books available.</li>
                 {% endfor %}
             </ul>
 
             <!-- Pagination Controls -->
-            <div class="pagination">
+            <div class="pagination" style="text-align: center; margin-top: 20px;">
                 {% if books.has_previous %}
                     <a href="?page=1{% if selected_subgenre %}&subgenre={{ selected_subgenre }}{% endif %}">First</a>
                     <a href="?page={{ books.previous_page_number }}{% if selected_subgenre %}&subgenre={{ selected_subgenre }}{% endif %}">Previous</a>
@@ -54,7 +73,7 @@
         </div>
 
         <!-- Right Side: Collapsible Subgenres -->
-        <div class="subgenres-list" style="width: 25%; float: right;">
+        <div class="subgenres-list" style="width: 20%; float: right;">
             <h2>Subgenres</h2>
             <button onclick="toggleSubgenres()" class="btn btn-small btn-dark-blue">Show Subgenres</button>
             <ul id="subgenre-menu" style="display: none;">
@@ -67,6 +86,15 @@
         </div>
     </div>
 
-    <script src="{% static "js/books.js" %}" crossorigin="anonymous"></script>
+    <script>
+        function toggleSubgenres() {
+            var menu = document.getElementById("subgenre-menu");
+            if (menu.style.display === "none") {
+                menu.style.display = "block";
+            } else {
+                menu.style.display = "none";
+            }
+        }
+    </script>
 
 {% endblock %}
