@@ -20,6 +20,23 @@
     color: #444; /* Slightly darker gray for contrast */
 }
 
+.fade-in {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* New styles for books.html */
 .big-pink-container {
     background-color: #d63384; /* Darker pink */
