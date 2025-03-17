@@ -100,9 +100,12 @@ class ProfileView(View):#this is to show the user's profile properly
         except TypeError:
             return redirect(reverse('pageflip:index'))
 
+        ratings = BookRating.objects.filter(user=user).order_by('-id')[:5]
+
         context_dict = {'user_profile': user_profile,
                         'selected_user': user,
-                        'form': form}
+                        'form': form,
+                        'ratings': ratings}
         return render(request, 'pageflip/profile.html', context_dict)
 
     @method_decorator(login_required)

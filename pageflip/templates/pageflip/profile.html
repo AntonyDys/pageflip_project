@@ -7,7 +7,7 @@
 
 {% block body_block %}
 <div class="big-pink-container">
-    <h1 class="italic-classic">{{ selected_user.username }}'s Profile</h1>
+    <h1 class="italic-classic">{{ selected_user.username }}</h1>
     <img src="{{ MEDIA_URL }}{{ user_profile.profilePicture.url }}"
          width="150"
          height="150"
@@ -15,14 +15,24 @@
          alt="{{ selected_user.username }}'s profile picture"/>
     <br/>
     <div>
-        <p>
+        <p style="text-align: left">
             <strong>About me:</strong>
             {{ user_profile.userAboutMe }}
         </p>
-        {% if selected_user == user %}
-        <a href="{% url 'pageflip:edit_profile' user.username %}" class="btn btn-primary" role="button">Edit profile</a>
+
+    </div>
+    <h2 style="text-align: left">Rated books</h2>
+    <ul>
+        {% for rating in ratings %}
+        <li style="text-align: left">{{ rating.book.title }} - {{ rating.rating }} stars</li>
+        {% empty %}
+        <li>No ratings? :( Start reading!</li>
+        {% endfor %}
+         {% if selected_user == user %}
+        <a href="{% url 'pageflip:edit_profile' user.username %}" class="btn btn-primary float-end" role="button">Edit profile</a>
         {% else %}
         {% endif %}
-    </div>
+    </ul>
+
 </div>
 {% endblock %}
