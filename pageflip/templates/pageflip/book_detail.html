@@ -27,12 +27,12 @@
         <p><strong>Description:</strong> {{ book.description }}</p>
         <p><strong>Subgenres:</strong>
             {% for subgenre in book.subgenres.all %}
-                <a href="{% url 'pageflip:books' %}?subgenre={{ subgenre.name }}">{{ subgenre.name }}</a>{% if not forloop.last %}, {% endif %}
+                <a href="{% url 'pageflip:books' %}?subgenre={{ subgenre.slug }}">{{ subgenre.name }}</a>{% if not forloop.last %}, {% endif %}
             {% empty %}
                 No subgenres
             {% endfor %}
         </p>
-        
+
         {% if user.is_authenticated %}
         <form action="{% url 'pageflip:add_rating' book.id %}" method="post" class="rating-form">
             {% csrf_token %}
@@ -46,9 +46,10 @@
             <input type="submit" value="Rate me" class="rating-button">
         </form>
         {% endif %}
-        
+
         <br>
         <a href="{% url 'pageflip:books' %}" class="btn btn-dark-blue">Back to Books</a>
     </div>
 {% endblock %}
+
 

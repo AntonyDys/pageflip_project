@@ -24,7 +24,7 @@
                 {% for book in books %}
                     <li class="book-item">
                         <!-- Book Image -->
-                        <a href="{% url 'pageflip:book_detail' book.id %}">
+                        <a href="{% url 'pageflip:book_detail' book.slug %}">
                             <img src="/media/book_covers/default_book.jpg"
                                  alt="Book Cover"
                                  width="200"
