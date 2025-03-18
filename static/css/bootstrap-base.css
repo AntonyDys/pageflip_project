@@ -197,3 +197,49 @@
     display: none;
 }
 
+.book-detail {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: pink;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rating-form {
+    margin-top: 10px;
+}
+
+.rating-select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.rating-button {
+    background-color: #1e3a8a; /* Dark blue */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.rating-button:hover {
+    background-color: #162c69;
+}
+
+.btn-dark-blue {
+    background-color: #1e3a8a;
+    color: white;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.btn-dark-blue:hover {
+    background-color: #162c69;
+}
+
+
