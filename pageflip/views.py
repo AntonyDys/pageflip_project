@@ -184,10 +184,10 @@ def add_rating(request, book_id):
     except Exception as e:
         #for debug
         print(f"Error occurred: {str(e)}")
-        return redirect('pageflip:book_detail', book_id=book_id)
+        return redirect('pageflip:book_detail', slug=book.slug)
 
 
-    return redirect('pageflip:book_detail', book_id=book_id)
+    return redirect('pageflip:book_detail', slug=book.slug)
 
 #this class is for editing the profile separately from viewing it since I had trouble with displaying it and editing
 #it would basically only show the profile picture and about me would just be a blank text box no matter what
