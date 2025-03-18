@@ -123,3 +123,64 @@
     background: #e06b89;
     cursor: pointer;
 }
+
+
+/* books html - section new stuff */
+/* books list styling - left side */
+.books-list {
+    width: 75%;
+    float: left;
+}
+
+/* subgenres list styling - right side */
+.subgenres-list {
+    width: 20%;
+    float: right;
+}
+
+/* styling for book grid layout */
+.book-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+}
+
+/* styling for individual book item */
+.book-item {
+    width: 30%;
+    text-align: center;
+    margin-bottom: 20px;
+    list-style: none;
+}
+
+/* styling for book image centering */
+.book-image {
+    display: block;
+    margin: 0 auto;
+}
+
+/* styling for book title link */
+.book-title {
+    display: block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* full width break to ensure 3 books per row */
+.full-width-break {
+    width: 100%;
+}
+
+/* pagination container styling */
+.pagination-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* subgenre menu is hidden by default */
+#subgenre-menu {
+    display: none;
+}
+
