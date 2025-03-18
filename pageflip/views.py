@@ -51,8 +51,8 @@ def register_profile(request):
     context_dict = {'form': form}
     return render(request, 'pageflip/profile_registration.html', context_dict)
 
-def book_detail(request, book_id):
-    book = get_object_or_404(BookPage, id=book_id)
+def book_detail(request, slug): #views for individual books
+    book = get_object_or_404(BookPage, slug=slug)
     return render(request, "pageflip/book_detail.html", {"book": book})
 
 

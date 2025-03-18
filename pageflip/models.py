@@ -10,7 +10,7 @@ class SubGenreCategory(models.Model):#sub-genres for the books, like categories 
     views = models.IntegerField(default=0)
     # slug field - makes url pretty.
     slug = models.SlugField(unique=True, blank=True, null=True)
-    views = models.IntegerField(default=0)
+
 
     class Meta:
         verbose_name_plural = 'Sub-Genre Categories'
@@ -31,6 +31,12 @@ class BookPage(models.Model):#the books themselves
     series_info = models.CharField(max_length=50) #Standalone or part of a Series
     description = models.TextField()  # longer than CharField if needed
     subgenres = models.ManyToManyField(SubGenreCategory)
+    slug = models.SlugField(unique=True, blank=True, null=True) #making urls pretty
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super(BookPage, self).save(*args, **kwargs)
 
     def average_rating(self):
         #ratings = self.ratings.all()
