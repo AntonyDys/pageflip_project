@@ -8,7 +8,19 @@
 {% block body_block %}
     <div class="book-detail">
         <h2>{{ book.title }}</h2>
-        <p><strong>Average Rating: {{ book.average_rating }}</strong></p>
+        {% if book.average_rating == 5 %}
+        <p><strong>Average Rating: ⭐⭐⭐⭐⭐</strong></p>
+        {% elif book.average_rating >= 4 %}
+        <p><strong>Average Rating: ⭐⭐⭐⭐</strong></p>
+        {% elif book.average_rating >= 3 %}
+        <p><strong>Average Rating: ⭐⭐⭐</strong></p>
+        {% elif book.average_rating >= 2 %}
+        <p><strong>Average Rating: ⭐⭐</strong></p>
+        {5 elif book.average_rating >= 1 %}
+        <p><strong>Average Rating: ⭐</strong></p>
+        {% else %}
+        <p><strong>Average Rating: No ratings? :(</strong></p>
+        {% endif %}
         <p><strong>Author:</strong> {{ book.author }}</p>
         <p><strong>Year:</strong> {{ book.year_of_publication }}</p>
         <p><strong>Series Info:</strong> {{ book.series_info }}</p>
