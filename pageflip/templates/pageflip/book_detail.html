@@ -1,12 +1,11 @@
-{% extends 'pageflip/base.html' %}
-{% load staticfiles %}
+{% load static %}
 
 {% block title_block %}
     {{ book.title }}
 {% endblock %}
 
 {% block body_block %}
-    <div class="book-detail" style="max-width: 600px; margin: auto; padding: 20px; background: pink; border-radius: 10px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);">
+    <div class="book-detail">
         <h2>{{ book.title }}</h2>
         <p><strong>Average Rating: {{ book.average_rating }}</strong></p>
         <p><strong>Author:</strong> {{ book.author }}</p>
@@ -19,23 +18,24 @@
             {% empty %}
                 No subgenres
             {% endfor %}
-            {% if user.is_authenticated %}
-            <form action="{% url 'pageflip:add_rating' book.id %}" method="post">
-        {% csrf_token %}
-        <!-- This can definitely move, I just needed to test. Also I just discovered how to comment in html lol -->
-        <select name="rating">
-            <option value="1">1 Star</option>
-            <option value="2">2 Star</option>
-            <option value="3">3 Star</option>
-            <option value="4">4 Star</option>
-            <option value="5">5 Star</option>
-        </select>
-        <input type="submit" value="Rate me">
-    </form>
-        {% else %}
-        {% endif %}
         </p>
+        
+        {% if user.is_authenticated %}
+        <form action="{% url 'pageflip:add_rating' book.id %}" method="post" class="rating-form">
+            {% csrf_token %}
+            <select name="rating" class="rating-select">
+                <option value="1">1 Star</option>
+                <option value="2">2 Star</option>
+                <option value="3">3 Star</option>
+                <option value="4">4 Star</option>
+                <option value="5">5 Star</option>
+            </select>
+            <input type="submit" value="Rate me" class="rating-button">
+        </form>
+        {% endif %}
+        
         <br>
         <a href="{% url 'pageflip:books' %}" class="btn btn-dark-blue">Back to Books</a>
     </div>
 {% endblock %}
+
