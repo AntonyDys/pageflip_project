@@ -1,15 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models import Avg
+from django.template.defaultfilters import slugify
 
 
 class SubGenreCategory(models.Model):#sub-genres for the books, like categories in the text book
     NAME_MAX_LENGTH = 128
     name = models.CharField(max_length=NAME_MAX_LENGTH, unique=True)
     views = models.IntegerField(default=0)
+    # slug field - makes url pretty.
+    slug = models.SlugField(unique=True, blank=True, null=True)
+    views = models.IntegerField(default=0)
 
     class Meta:
         verbose_name_plural = 'Sub-Genre Categories'
+
+    def save(self, *args, **kwargs):
+        # generate a slug from the name field before saving c:
+        self.slug = slugify(self.name)
+        super(SubGenreCategory, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name

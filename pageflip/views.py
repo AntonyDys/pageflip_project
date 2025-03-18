@@ -55,19 +55,30 @@ def book_detail(request, book_id):
     book = get_object_or_404(BookPage, id=book_id)
     return render(request, "pageflip/book_detail.html", {"book": book})
 
-def books(request):#books!
-    subgenres = SubGenreCategory.objects.all()  #gets all subgenres for the sidebar (more asthetic)
 
-    #gets the selected subgenre from the URL when selected
+def books(request):  # books!
+    subgenres = SubGenreCategory.objects.all()  # gets all subgenres for the sidebar (more asthetic)
+
+    # gets the selected subgenre from the URL when selected
     selected_subgenre = request.GET.get("subgenre", None)
 
     if selected_subgenre:
-        #filter books to show only those selected in the subgenre
-        books = BookPage.objects.filter(subgenres__name=selected_subgenre).order_by("id")
+        try:
+            # filter books to show only those selected in the subgenre
+            # you also need to slug here for it to work - sigh
+            subgenre_obj = SubGenreCategory.objects.get(slug=selected_subgenre)
+            books = BookPage.objects.filter(subgenres__slug=selected_subgenre).order_by("id")
+            # update selected_subgenre for display purposes (using proper name)
+            selected_subgenre_display = subgenre_obj.name
+        except SubGenreCategory.DoesNotExist:
+            # if no matching subgenre, show all books
+            books = BookPage.objects.all().order_by("id")
+            selected_subgenre_display = None
     else:
-        books = BookPage.objects.all().order_by("id") # all books if no subgenre is selected
+        books = BookPage.objects.all().order_by("id")  # all books if no subgenre is selected
+        selected_subgenre_display = None
 
-    #Paginate books (15 per page) <- pretty cool
+    # Paginate books (15 per page) <- pretty cool
     paginator = Paginator(books, 15)
     page = request.GET.get("page")
     paged_books = paginator.get_page(page)
@@ -75,9 +86,10 @@ def books(request):#books!
     context_dict = {
         "books": paged_books,
         "subgenres": subgenres,
-        "selected_subgenre": selected_subgenre,  #pass the selected subgenre to the template
+        "selected_subgenre": selected_subgenre_display,  # pass the selected subgenre to the template
     }
     return render(request, "pageflip/books.html", context=context_dict)
+
 
 class ProfileView(View):#this is to show the user's profile properly
     def get_user_details(self, username):

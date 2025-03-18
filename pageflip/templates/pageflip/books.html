@@ -70,7 +70,7 @@
             <button onclick="toggleSubgenres()" class="pink-button">Show Subgenres</button>
             <ul id="subgenre-menu">
                 {% for subgenre in subgenres %}
-                    <li><a href="?subgenre={{ subgenre.name }}">{{ subgenre.name }}</a></li>
+                    <li><a href="?subgenre={{ subgenre.slug }}">{{ subgenre.name }}</a></li>
                 {% empty %}
                     <li>No subgenres available.</li>
                 {% endfor %}
