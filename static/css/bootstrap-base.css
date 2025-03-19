@@ -77,6 +77,25 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+.bigger-purple-container {
+    background-color: #d8b3ff; /* Light purple */
+    padding: 30px;
+    text-align: center;
+    width: 90%; /* Increased width */
+    margin: 0 auto;
+    max-width: 800px; /* Bigger max width */
+    border-radius: 20px;
+    color: white;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+
+    /* Added flexbox for book cards */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+
 
 .big-blue-container {
     background-color: #1e3a8a; /* Dark blue */
