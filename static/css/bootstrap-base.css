@@ -20,14 +20,29 @@
 }
 
 
-
-
 .italic-modern {
     font-family: 'Poppins', sans-serif; /* Modern-looking font */
     font-style: italic;
     font-weight: 300;
     color: #444; /* Slightly darker gray for contrast */
 }
+
+/* Aligns text to centre */
+.text-center {
+    text-align: center;
+}
+
+/* Aligns text to left */
+.text-left {
+    text-align: left;
+}
+
+/* Aligns text to rightv*/
+.text-right {
+    text-align: right;
+}
+
+
 
 .fade-in {
     opacity: 0;
