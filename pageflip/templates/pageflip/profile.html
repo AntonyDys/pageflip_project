@@ -15,18 +15,18 @@
          alt="{{ selected_user.username }}'s profile picture"/>
     <br/>
     <div>
-        <p style="text-align: left">
+        <p class="move-text-left">
             <strong>About me:</strong>
             {{ user_profile.userAboutMe }}
         </p>
 
     </div>
-    <h2 style="text-align: left">Rated books</h2>
+    <h2 class="move-text-left">Rated books</h2>
     <ul>
         {% for rating in ratings %}
-        <li style="text-align: left">{{ rating.book.title }} - {{ rating.rating }} stars</li>
+        <li class="move-text-left">{{ rating.book.title }} - {{ rating.rating }} stars</li>
         {% empty %}
-        <li style="text-align: left">No ratings? :( Start reading!</li>
+        <li class="move-text-left">No ratings? :( Start reading!</li>
         {% endfor %}
          {% if selected_user == user %}
         <a href="{% url 'pageflip:edit_profile' user.username %}" class="btn btn-primary float-end" role="button">Edit profile</a>
@@ -36,5 +36,3 @@
 
 </div>
 {% endblock %}
-
-
