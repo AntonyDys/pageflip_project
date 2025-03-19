@@ -28,17 +28,17 @@
 }
 
 /* Aligns text to centre */
-.text-center {
+.move-text-center {
     text-align: center;
 }
 
 /* Aligns text to left */
-.text-left {
+.move-text-left {
     text-align: left;
 }
 
 /* Aligns text to rightv*/
-.text-right {
+.move-text-right {
     text-align: right;
 }
 
