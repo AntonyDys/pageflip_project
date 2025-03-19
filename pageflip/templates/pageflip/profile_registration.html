@@ -10,7 +10,7 @@
     <h1>Register Here - Profile addons</h1>
 </div>
 
-<div>
+<div class = "big-purple-container">
     <form method="post" action="{% url 'pageflip:register_profile' %}" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
