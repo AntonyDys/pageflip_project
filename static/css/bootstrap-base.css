@@ -296,3 +296,108 @@
 .btn-read-me:hover {
     background-color: #162c69;
 }
+
+/* Page Title */
+.italic-classic-index {
+    font-style: italic;
+    font-family: 'Times New Roman', serif;
+}
+
+.italic-modern-index {
+    font-style: italic;
+    font-family: 'Georgia', serif;
+}
+
+/* Fade-In Animation */
+.fade-in-index {
+    animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Text Alignment */
+.text-center-index {
+    text-align: center;
+}
+
+.text-left-index {
+    text-align: left;
+}
+
+.text-right-index {
+    text-align: right;
+}
+
+/* Main Section Layout */
+.main-section-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 20px;
+}
+
+/* Genre Box */
+.genre-box-index {
+    background-color: #a3c4f3;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.genre-text-index {
+    font-size: 22px;
+}
+
+/* Book Section */
+.book-section-index {
+    background-color: #d8b3ff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+/* Book Grid Layout */
+.book-grid-index {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Book Card */
+.book-card-index {
+    width: 18%;
+    text-align: center;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Book Title */
+.book-title-index {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.book-title-index:hover {
+    text-decoration: underline;
+}
+
+
