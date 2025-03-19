@@ -203,10 +203,9 @@
 
 /* styling for book title link */
 .book-title {
-    display: block;
-    font-size: 18px;
-    font-weight: bold;
-    margin-top: 10px;
+    margin: 0;
+    font-size: 1.5em;
+    color: white;
 }
 
 /* full width break to ensure 3 books per row */
@@ -270,4 +269,16 @@
     background-color: #162c69;
 }
 
+.btn-read-me {
+    background-color: #1e3a8a;  /* Dark blue, matching Rate Me button */
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
 
+.btn-read-me:hover {
+    background-color: #162c69;
+}

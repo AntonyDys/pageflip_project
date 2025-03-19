@@ -8,6 +8,8 @@
 {% block body_block %}
     <div class="book-detail">
         <h2>{{ book.title }}</h2>
+        <a href="/media/this_is_a_book.pdf" target="_blank" class="btn btn-read-me">Read Me</a>
+
         {% if book.average_rating == 5 %}
         <p><strong>Average Rating: ⭐⭐⭐⭐⭐</strong></p>
         {% elif book.average_rating >= 4 %}
@@ -50,6 +52,7 @@
         <br>
         <a href="{% url 'pageflip:books' %}" class="btn btn-dark-blue">Back to Books</a>
     </div>
+
 {% endblock %}
 
 
