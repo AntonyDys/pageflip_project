@@ -37,7 +37,7 @@
             {% for book in books %}
                 <div style="width: 18%; text-align: center; background: white; padding: 10px; border-radius: 8px;">
                     <!-- Book Image -->
-                    <a href="{% url 'pageflip:book_detail' book.id %}">
+                    <a href="{% url 'pageflip:book_detail' book.slug %}">
                         <img src="/media/book_covers/default_book2.jpg"
                              alt="Book Cover"
                              width="180"
@@ -46,8 +46,8 @@
                     </a>
 
                     <!-- Book Title Below Image -->
-                    <a href="{% url 'pageflip:book_detail' book.id %}"
-                       style="display: block; font-size: 16px; font-weight: bold; margin-top: 10px;">
+                    <a href="{% url 'pageflip:book_detail' book.slug %}"
+                       style="display: block; font-size: 16px; font-weight: bold; margin-top: 10px; color: black;">
                         {{ book.title }}
                     </a>
                 </div>
