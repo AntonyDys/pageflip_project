@@ -26,7 +26,7 @@
         {% for rating in ratings %}
         <li style="text-align: left">{{ rating.book.title }} - {{ rating.rating }} stars</li>
         {% empty %}
-        <li>No ratings? :( Start reading!</li>
+        <li style="text-align: left">No ratings? :( Start reading!</li>
         {% endfor %}
          {% if selected_user == user %}
         <a href="{% url 'pageflip:edit_profile' user.username %}" class="btn btn-primary float-end" role="button">Edit profile</a>
@@ -36,3 +36,5 @@
 
 </div>
 {% endblock %}
+
+
