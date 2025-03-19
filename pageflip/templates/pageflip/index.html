@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1 class="italic-classic fade-in" style="text-align: center;">Welcome to PageFlip!</h1>
+    <h1 class="italic-classic fade-in move-text-center">Welcome to PageFlip!</h1>
 
     <!-- Main Section: Genre of the Month + Homepage Image -->
     <div style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 20px;">
@@ -30,7 +30,7 @@
     <!-- Book Section with Pink Background -->
     <div class="container mt-5" style="background-color: #d8b3ff; padding: 20px; border-radius: 10px; margin-top: 30px;">
         <!-- Centered Section Title -->
-        <h2 class="italic-modern" style="text-align: center;">Most Popular This Month</h2>
+        <h2 class="italic-modern move-text-center">Most Popular This Month</h2>
 
         <!-- Book Grid -->
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px;">
@@ -52,7 +52,7 @@
                     </a>
                 </div>
             {% empty %}
-                <p style="text-align: center;">No books available.</p>
+                <p class="move-text-center">No books available.</p>
             {% endfor %}
         </div>
     </div>
