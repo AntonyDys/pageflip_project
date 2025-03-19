@@ -6,57 +6,49 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1 class="italic-classic fade-in move-text-center">Welcome to PageFlip!</h1>
+    <h1 class="italic-classic-index fade-in-index text-center-index">Welcome to PageFlip!</h1>
 
     <!-- Main Section: Genre of the Month + Homepage Image -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 40px; margin-top: 20px;">
+    <div class="main-section-index">
 
-        <!-- Genre of the Month Box (Blue) -->
-        <div style="background-color: #a3c4f3; color: black; padding: 20px; border-radius: 10px; width: 250px; text-align: center; font-size: 18px; font-weight: bold;">
-            Genre of the Month:<br> <span style="font-size: 22px;">Young Adult</span>
+        <!-- Genre of the Month Box -->
+        <div class="genre-box-index">
+            Genre of the Month:<br> <span class="genre-text-index">Young Adult</span>
         </div>
 
-        <!-- Main Page Image (Centered) -->
+        <!-- Main Page Image -->
         <div>
             <img src="/media/book_covers/homepage.jpg"
                  alt="Homepage Image"
-                 width="600"
-                 height="300"
-                 style="display: block; border-radius: 10px;">
+                 style="display: block; border-radius: 10px; width: 600px; height: 300px;">
         </div>
 
     </div>
 
-    <!-- Book Section with Pink Background -->
-    <div class="container mt-5" style="background-color: #d8b3ff; padding: 20px; border-radius: 10px; margin-top: 30px;">
-        <!-- Centered Section Title -->
-        <h2 class="italic-modern move-text-center">Most Popular This Month</h2>
+    <!-- Book Section -->
+    <div class="book-section-index">
+        <!-- Section Title -->
+        <h2 class="italic-modern-index text-center-index">Most Popular This Month</h2>
 
         <!-- Book Grid -->
-        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px;">
+        <div class="book-grid-index">
             {% for book in books %}
-                <div style="width: 18%; text-align: center; background: white; padding: 10px; border-radius: 8px;">
+                <div class="book-card-index">
                     <!-- Book Image -->
                     <a href="{% url 'pageflip:book_detail' book.slug %}">
                         <img src="/media/book_covers/default_book2.jpg"
                              alt="Book Cover"
-                             width="180"
-                             height="255"
-                             style="display: block; margin: 0 auto; border-radius: 5px;">
+                             style="display: block; margin: 0 auto; border-radius: 5px; width: 180px; height: 255px;">
                     </a>
 
-                    <!-- Book Title Below Image -->
-                    <a href="{% url 'pageflip:book_detail' book.slug %}"
-                       style="display: block; font-size: 16px; font-weight: bold; margin-top: 10px; color: black;">
+                    <!-- Book Title -->
+                    <a href="{% url 'pageflip:book_detail' book.slug %}" class="book-title-index">
                         {{ book.title }}
                     </a>
                 </div>
             {% empty %}
-                <p class="move-text-center">No books available.</p>
+                <p class="text-center-index">No books available.</p>
             {% endfor %}
         </div>
     </div>
 {% endblock %}
-
-
-
