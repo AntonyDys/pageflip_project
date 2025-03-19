@@ -6,9 +6,26 @@
 {% endblock %}
 
 {% block body_block %}
-    <h1 class = "italic-classic fade-in" >About Us: What is PageFlip?</h1>
-    <div class = "big-purple-container">
-      {{ boldmessage }}
+    <h1 class = "italic-classic fade-in" >About Us</h1>
+    <div class = "big-purple-container" style="text-align: left">
+        <h1>What is PageFlip?</h1>
+        <p>PageFlip is an online home for all your reading needs Whether you like Sci-fi, Romance, Young Adult, and more! You'll find a place here at PageFlip.
+            This place was built by bookworms, for bookworms, and we couldn't be prouder of what we accomplished</p>
+        <h2>How does it work?</h2>
+        <p>Each month our users can enjoy 100* new books, with a special theme each month. Don't worry if you don't fancy
+        a specific genre! We guarantee that each month you'll find a neat sub-genre that fits your mood, and you might even
+        find a new favourite! Your opinions are the most important building block in the PageFlip site, so don't be shy and
+        give our books a rating.</p>
+        <h2>Where can I start?</h2>
+        <p>We're glad you are interested! To start, head over to our <a href="{% url 'registration_register' %}">registration page</a> and make an account.
+        Yep, it's that easy! From there you can start reading, rating and making new discoveries each month with us</p>
+        <h2>I have more questions</h2>
+        <p>No worries, if you have any concerns or simply want a book recommendation or two, send us an email at
+            pageflipsupport@pageflip.com and we'll get back to you right away</p>
+        <p>So, what are you waiting for? Start reading! :)</p>
+
     </div>
+
+
 
 {% endblock %}
