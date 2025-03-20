@@ -1,10 +1,17 @@
-/* Styles for bootstrap-base.html */
+/* Styles for templates.html */
 
-/* please bear with me as I don't know how this looks  */
 
+
+/* backgrounds for navbars */
+.bg-lightblue-navbar {
+    background-color: #ccf6f6;
+}
+
+.bg-pastelblue-navbar {
+    background-color: #dcf5f5;
+}
 
 /* Class for an older, classic italic style for titles */
-
 .italic-classic {
     font-family: "Playfair Display", "Georgia", serif;/* Classic, elegant serif font */
     font-style: italic;
@@ -37,14 +44,14 @@
     text-align: left;
 }
 
-/* Aligns text to rightv*/
+/* Aligns text to right */
 .move-text-right {
     text-align: right;
 }
 
 
 
-/* New styles for books.html */
+/* light purple container */
 .big-purple-container {
     background-color: #d8b3ff; /* Light purple */
     padding: 20px;
@@ -52,7 +59,7 @@
     margin: 0 auto;
     max-width: 600px;
     border-radius: 20px;
-    color: white; /* Darker purple for contrast */
+    color: white; 
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
