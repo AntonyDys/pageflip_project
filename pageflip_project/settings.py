@@ -32,7 +32,7 @@ SECRET_KEY = '%@%sqce^w)u35z_k2_y!-y65%hom59^z)bhcmt1$+sc+9bgkc*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['TonyDys.pythonanywhere.com']
+ALLOWED_HOSTS = ['TonyDys.pythonanywhere.com', 'pageflip.pythonanywhere.com', '127.0.0.1']
 
 
 # Application definition
